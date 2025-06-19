@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+
+@layer components {
+    body {
+        @apply font-medium;
+        font-family: var(--font-family-inter);
+    }
+
+    .font-inter {
+        font-family: var(--font-family-inter);
+    }
+
+    .font-melody {
+        font-family: var(--font-family-melody);
+    }
+
+    .navigation-bar-item {
+        @apply whitespace-nowrap cursor-grab flex items-center gap-2 px-3 py-1 rounded-lg transition select-none bg-[var(--color-bg-default)] text-[var(--color-text-default)];
+
+        &:hover {
+            @apply bg-[var(--color-bg-hover)];
+        }
+
+        &.dragging {
+            @apply z-10 cursor-grabbing;
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            transform: scale(1.05);
+        }
+
+        &.active, &.focused {
+            @apply bg-[var(--color-bg-active)] text-[var(--color-text-active)] border-[.5px];
+
+            .icon {
+                @apply text-[var(--color-icon-active)];
+            }
+        }
+
+        &.active {
+            @apply border-[var(--color-border-active)];
+            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2),
+            0 1px 3px 0 rgba(0, 0, 0, .04);
+        }
+
+        &.focused {
+            @apply border-[var(--color-border-focused)];
+            box-shadow: 0 0 0 1.5px rgba(47, 114, 226, 0.25),
+            0 1px 1px 0 rgba(0, 0, 0, .02),
+            0 1px 3px 0 rgba(0, 0, 0, .04);
+
+        }
+
+        .icon {
+            @apply mr-2 text-[var(--color-icon-default)];
+        }
+
+        .active-icon-show-menu {
+            @apply ml-auto text-gray-100;
+        }
+    }
+
+    .context-menu-container {
+        @apply z-50 rounded-xl min-w-[240px] bg-[var(--color-bg-context-menu)] border-[.5px] border-[var(--color-border-active)];
+
+        .title {
+            @apply p-3 text-base border-b-[.5px] font-medium border-[var(--color-border-active)];
+        }
+
+        .sub-context-menu-container {
+            @apply p-3 gap-[14px] flex flex-col text-sm font-medium ;
+
+            .item-container {
+                @apply flex flex-row cursor-pointer rounded items-center;
+
+                .icon {
+                    @apply text-[var(--color-gray-100)];
+                }
+
+                .name {
+                    @apply pl-1.5
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
