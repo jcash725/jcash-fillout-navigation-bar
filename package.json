@@ -1,5 +1,6 @@
 {
   "name": "jcash-fillout-navigation-bar",
+  "homepage": "https://jcash725.github.io/jcash-fillout-navigation-bar",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,7 +8,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.10",
@@ -26,6 +29,7 @@
     "eslint": "^9.25.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
+    "gh-pages": "^6.1.1",
     "globals": "^16.0.0",
     "postcss": "^8.5.6",
     "typescript": "~5.8.3",

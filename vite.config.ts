@@ -4,8 +4,9 @@ import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
 
-// https://vite.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig({
+	base: "/jcash-fillout-navigation-bar/",
 	plugins: [react(), tailwindcss(),
 	],
 	resolve: {

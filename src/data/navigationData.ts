@@ -16,19 +16,7 @@ export const defaultNavigationBarPages: NavItem[] = [
 	{
 		id: 'ending',
 		name: 'Ending'
-	},
-	{
-		id: 'settings',
-		name: 'Settings'
-	},
-	{
-		id: 'profile',
-		name: 'Profile'
-	},
-	{
-		id: 'help',
-		name: 'Help'
-	},
+	}
 ]
 
 export const STORAGE_KEY = 'navigationBarPages'

@@ -4,68 +4,107 @@ A modern, interactive navigation bar component built with React, TypeScript, and
 
 ## 🚀 Features
 
-- **Drag & Drop Reordering**: Intuitively reorder navigation tabs by dragging
-- **Context Menu**: Right-click any tab to access actions (Rename, Duplicate, Delete)
-- **Persistent State**: Tab order is automatically saved to localStorage
-- **Add New Pages**: Insert new pages at any position
-- **Active Tab Management**: Visual indication of active tabs
-- **Responsive Design**: Works across different screen sizes
-- **Custom Fonts**: Supports Inter and BL Melody fonts
+- **Drag & Drop Reordering**: Intuitively reorder navigation tabs by dragging.
+- **Context Menu**: Right-click any tab to access actions (e.g., Rename, Duplicate, Delete).
+- **Persistent State**: Tab order is automatically saved to localStorage.
+- **Add New Pages**: Seamlessly insert new pages between existing tabs or at the end.
+- **Active Tab Management**: Clear visual indication for the currently active tab.
+- **Custom Fonts**: Supports custom fonts like Inter and BL Melody.
 
 ## 🛠️ Tech Stack
 
 - **React 19** - UI framework
 - **TypeScript** - Type safety
-- **Tailwind CSS** - Styling
-- **Vite** - Build tool and dev server
+- **Tailwind CSS** - Utility-first styling
+- **Vite** - Modern build tool and dev server
 - **Lucide React** - Icons
 - **localStorage** - State persistence
 
 ## 📦 Installation
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd jcash-fillout-navigation-bar
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Start the development server:
-```bash
-npm run dev
-```
-
-4. Open your browser and navigate to `http://localhost:5173`
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/jcash725/jcash-fillout-navigation-bar.git
+    cd jcash-fillout-navigation-bar
+    ```
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+3.  Start the development server:
+    ```bash
+    npm run dev
+    ```
+4.  Open your browser and navigate to `http://localhost:5173`.
 
 ## 🎯 Usage
 
-### Basic Navigation Bar
+The application is self-contained within the `NavigationContainer`. To use it, simply render it in your main `App.tsx`:
+
 ```jsx
-import { NavigationBar } from './components/navigation-bar/NavigationBar'
+// src/App.tsx
+import { NavigationContainer } from './components/navigation-container/NavigationContainer';
 
 function App() {
-  return (
-    <div>
-      <NavigationBar />
-    </div>
-  )
+  return <NavigationContainer />;
 }
 ```
 
 ### Customizing Default Pages
-Edit `src/data/navigationData.ts` to modify the default navigation pages:
+To change the initial set of navigation tabs, edit the `defaultNavigationBarPages` array in `src/data/navigationData.ts`:
 
 ```typescript
+// src/data/navigationData.ts
 export const defaultNavigationBarPages: NavItem[] = [
   { id: 'home', name: 'Home' },
   { id: 'about', name: 'About' },
   { id: 'contact', name: 'Contact' },
-]
+];
 ```
+
+## 📁 Project Structure
+
+The project follows a smart container/presentational component architecture.
+
+```
+src/
+├── components/
+│   ├── navigation-container/
+│   │   └── NavigationContainer.tsx  # (Smart) Manages all state and logic
+│   ├── navigation-bar/
+│   │   └── NavigationBar.tsx          # (Dumb) Renders the bar and tabs
+│   ├── navigation-bar-item/
+│   │   └── NavigationBarItem.tsx      # (Dumb) An individual tab
+│   └── page-view/
+│       └── PageView.tsx               # (Dumb) Displays the active page title
+├── hooks/
+│   └── useHorizontalDrag.ts         # Logic for drag-and-drop
+├── data/
+│   └── navigationData.ts            # Default data and localStorage logic
+└── ...
+```
+
+## 🎯 Key Components
+
+### `NavigationContainer` (Smart Component)
+This is the "brain" of the application. It holds all the state (the list of tabs, the active tab) and all the logic (adding, resetting, reordering tabs). It passes this data and logic down to the presentational components as props.
+
+### `NavigationBar` (Presentational Component)
+This component's only job is to display the navigation bar and its tabs. It doesn't contain any complex logic. It receives the list of tabs to display and functions to call when a user interacts with it (e.g., `onItemClick`).
+
+### `PageView` (Presentational Component)
+A simple component that displays the name of the currently active navigation item.
+
+## 🔧 Development
+
+### Available Scripts
+-   `npm run dev`: Starts the development server.
+-   `npm run build`: Builds the application for production.
+-   `npm run lint`: Runs the ESLint linter.
+-   `npm run preview`: Previews the production build locally.
+-   `npm run deploy`: Deploys the application to GitHub Pages.
+
+---
 
 ## 🎨 Customization
 
@@ -82,58 +121,6 @@ To use custom fonts in components:
 
 ### Styling
 Styles are managed through Tailwind CSS classes and custom CSS in `src/styles/styles.css`. The project uses CSS custom properties for theming.
-
-## 📁 Project Structure
-
-```
-src/
-├── components/
-│   └── navigation-bar/
-│       ├── NavigationBar.tsx          # Main navigation component
-│       ├── navigation-bar-item/
-│       │   └── NavigationBarItem.tsx  # Individual tab component
-│       ├── context-menu/
-│       │   └── ContextMenu.tsx        # Right-click menu
-│       └── add-page-button/
-│           └── AddPageButton.tsx      # Add new page button
-├── hooks/
-│   └── useHorizontalDrag.ts          # Drag and drop logic
-├── data/
-│   └── navigationData.ts             # Default pages and storage logic
-├── styles/
-│   └── styles.css                    # Custom styles
-└── index.css                         # Global styles and font imports
-```
-
-## 🔧 Development
-
-### Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run lint` - Run ESLint
-- `npm run preview` - Preview production build
-
-### State Management
-
-The navigation bar uses React's built-in state management with localStorage for persistence:
-- Tab order is automatically saved when items are reordered
-- Active tab state is maintained across sessions
-- New pages are automatically saved
-
-## 🎯 Key Components
-
-### NavigationBar
-Main container component that manages the overall state and layout.
-
-### NavigationBarItem
-Individual tab component with drag, click, and context menu functionality.
-
-### ContextMenu
-Right-click menu with actions for each tab.
-
-### useHorizontalDrag
-Custom hook that handles drag-and-drop reordering logic.
 
 ## 🤝 Contributing
 

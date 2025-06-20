@@ -1,13 +1,8 @@
 import 'src/styles/styles.css'
-import { NavigationBar } from "src/components/navigation-bar/NavigationBar"
+import { NavigationContainer } from 'src/components/navigation-container/NavigationContainer'
 
 function App() {
-
-	return (
-		<div>
-			<NavigationBar/>
-		</div>
-	)
+	return <NavigationContainer/>
 }
 
 export default App
